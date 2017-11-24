@@ -1,0 +1,9 @@
+%script{async: '', :src => "https://www.googletagmanager.com/gtag/js?id=#{ENV['GOOGLE_ANALYTICS_KEY']}"}
+%script
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  google_analytics_key = "#{ENV['GOOGLE_ANALYTICS_KEY']}";
+
+  gtag('config', google_analytics_key);

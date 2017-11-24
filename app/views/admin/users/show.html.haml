@@ -1,0 +1,27 @@
+.container
+  .pad-section
+    .box
+      = link_to admin_users_path do
+        .fa.fa-long-arrow-left
+        Back to All Users
+
+      .text-center
+        %h1= @user.username
+        = paginate @activities
+      %br
+      %table.table
+        %thead
+          %h3 Activities
+
+        %tbody
+          - @activities.each do |a|
+            %tr
+              %td
+                %span
+                  %b
+                    = @user.username
+                = a.description
+              %td.text-right
+                #{time_ago_in_words(a.created_at)} ago
+
+      = paginate @activities

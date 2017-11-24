@@ -1,0 +1,26 @@
+.container
+  .pad-section
+    .box
+      .text-center
+        %h1 Activities
+
+        = paginate @activities
+
+      %br
+      %table.table
+ 
+        %tbody
+          - @activities.all.each do |a|
+            %tr
+              %td
+                %span.profile-thumb-wrapper
+                  = image_tag(a.user.featured_image_url(:thumb))
+                &nbsp &nbsp &nbsp
+                %b
+                  = a.user.username
+                = a.description
+              %td.text-right
+                %i.text-muted
+                  #{time_ago_in_words(a.created_at)} ago
+
+      = paginate @activities

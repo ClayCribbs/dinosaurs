@@ -1,0 +1,17 @@
+.form-group
+  = f.input :username, required: true, input_html: { class: 'form-control', value: "#{params[:username].present? ? params[:username] : f.object.username }" }, autofocus: true
+
+.form-group
+  = f.input :email, required: true, input_html: { class: 'form-control' }
+
+.form-group
+  - if f.object.featured_image.present?
+    .existing-image-form-wrapper
+      %label Current Profile Photo:
+      %br
+      = image_tag(f.object.featured_image_url(:small_square))
+      .choose-new-image-wrapper
+        = f.input :featured_image, input_html: { class: 'form-control' }, label: 'Upload New Profile Photo:'
+
+  - else
+    = f.input :featured_image, input_html: { class: 'form-control' }, label: 'Profile Photo'

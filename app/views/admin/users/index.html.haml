@@ -1,0 +1,41 @@
+.container
+  .pad-section
+    .box
+      .text-center
+        %h1 Users
+
+        = paginate @users
+
+      %br
+      %table.table
+        %thead
+          %tr
+            %th
+              User
+            %th
+              Email
+            %th
+              Created
+            %th.text-center
+              Activities
+            %th
+
+        %tbody
+          - @users.all.each do |u|
+            %tr
+              %td
+                %span.profile-thumb-wrapper
+                  = image_tag(u.featured_image_url(:thumb))
+                &nbsp &nbsp &nbsp
+                = u.username
+              %td
+                = u.email
+              %td
+                = u.created_at.strftime('%Y.%m.%d')
+              %td.text-center
+                = u.activities.count
+              %td.text-right
+                = link_to admin_user_path(u) do
+                  View Details
+
+      = paginate @users

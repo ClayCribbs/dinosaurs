@@ -16,7 +16,7 @@ class FeaturedImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
-    "uploads/photo/featured_image/5/Gottschalk_20Wedding-2-XL.jpg"
+    "photos/Gottschalk+Wedding-#{model.id}.jpg"
   end
 
    def landscape?
@@ -31,23 +31,11 @@ class FeaturedImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :medium_square do
-    process resize_to_fill: [400, 400]
-  end
-
-  version :small_square, from_version: :medium_square do
-    process resize_to_fill: [150, 150]
-  end
-
-  version :thumb, from_version: :small_square do
-    process resize_to_fill: [ 50,  50]
-  end
-
   version :preview do
     if :landscape?
-      process resize_to_fill: [ 600, 400 ]
+      process resize_to_fill: [ 300, 200 ]
     else
-      process resize_to_fill: [ 400, 600 ]
+      process resize_to_fill: [ 200, 300 ]
     end
   end
 

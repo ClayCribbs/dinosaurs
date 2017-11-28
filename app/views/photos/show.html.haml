@@ -1,7 +1,7 @@
 .container-fluid
   .row
     .col-sm-12
-      = image_tag @photo.image
+      = image_tag @photo.featured_image.preview
       .text-cetner
         %h4= @photo.title
 

@@ -12,7 +12,7 @@
     %ul.navbar-nav.navbar-right
       - if current_user
         %li.nav-profile-pic
-          = image_tag(current_user.featured_image_url(:thumb))
+          = image_tag(current_user.featured_image)
         %li.dropdown.nav-link
           #navigation-user-settings.dropdown-toggle{ aria: { expanded: 'false', haspopup: 'true' }, data: { toggle: 'dropdown' } }
             .fa.fa-cog

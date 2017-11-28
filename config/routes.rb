@@ -13,11 +13,15 @@ Rails.application.routes.draw do
     get 'dashboard' => 'dashboard#index'
     resources :activities, only: [:index]
     resources :users, only: [:index, :show]
+    resources :photos
   end
 
-  get 'pages/index'
-  get 'pages/get'
-  get 'pages/readme'
+  resources :photos, only: [:index, :show] do
+    member do
+      post :update_cart
+      get :fetch
+    end
+  end
 
-  root 'pages#index'
+  root 'photos#index'
 end

@@ -6,12 +6,6 @@
 
   #navbarSupportedContent.collapse.navbar-collapse
     %ul.navbar-nav.mr-auto
-      %li.nav-item
-        = link_to pages_get_path, class: 'nav-link' do
-          Get
-      %li.nav-item
-        = link_to pages_readme_path, class: 'nav-link' do
-          ReadMe
       - if current_user && current_user.is_admin
         = link_to admin_dashboard_path, class: 'nav-link' do
           Admin Dashboard

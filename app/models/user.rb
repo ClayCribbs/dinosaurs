@@ -10,6 +10,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :activities, dependent: :destroy
+  has_many :photos_users
+  has_many :photos, through: :photos_users, source: :photo
 
   validates :email, presence: true
 
@@ -25,5 +27,10 @@ class User < ApplicationRecord
 
   def track_activity
     Activity.create(user: self, action: 'create', description: "joined our site!")
+  end
+
+  def quantity_owned(photo)
+    photos_user = PhotosUser.find_by(photo_id: photo.id, user_id: id)
+    return photos_user.present? ? photos_user.quantity : 0
   end
 end

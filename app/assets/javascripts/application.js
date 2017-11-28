@@ -11,5 +11,40 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function() {
+  $(function(){
+    var sPositions = localStorage.positions || "{}",
+    positions = JSON.parse(sPositions);
+
+    $.each(positions, function (id, pos) {
+      $("#" + id).css(pos)
+    })
+  });
+
+  $("#draggable").draggable({
+    containment: "#myModal",
+    revert : "valid",
+
+    scroll: false,
+    stop: function (event, ui) {
+        positions[this.id] = ui.position
+        localStorage.positions = JSON.stringify(positions)
+    }
+  })
+
+  $("#draggable2").draggable({
+    containment: "#myModal",
+    revert : "valid",
+
+    scroll: false,
+    stop: function (event, ui) {
+        positions[this.id] = ui.position
+        localStorage.positions = JSON.stringify(positions)
+    }
+  })
+});
+

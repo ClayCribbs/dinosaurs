@@ -1,0 +1,10 @@
+.container-fluid
+  .row
+    .col-sm-12
+      = image_tag @photo.featured_image
+      .text-cetner
+        %h4= @photo.title
+
+= link_to 'Edit', edit_admin_photo_path(@photo)
+\|
+= link_to 'Back', admin_photos_path

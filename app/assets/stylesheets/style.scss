@@ -13,7 +13,8 @@ html {
 body {
   position: relative;
   min-height: 100%;
-  background-color: $color_background_primary;
+  background-color: black;
+  color: white;
   padding-bottom: 100px;
 }
 
@@ -90,6 +91,254 @@ fieldset {
   color: #7D2727;
   background: #eff0f1;
   padding: 5px;
-  oveflow: auto;
+  overflow: auto;
   font-weight: bold;
+}
+
+.vcenter {
+  display:flex;
+  align-items:center;
+}
+
+.pad-top {
+  padding-top: 20px;
+}
+
+.pad-top-lg {
+  padding-top: 25px;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.full-width {
+  min-width: 100vw;
+  padding: 0px;
+  margin: 0;
+}
+
+.no-pad {
+  padding: 0px;
+}
+.background-dark {
+  padding-top: 20px;
+  margin-top: -20px;
+  border-right: solid 1px $color_border_dark;
+  background-color: #f7f7f7;
+}
+
+.image-preview {
+  max-height: 250px;
+}
+
+.preview-container {
+  height: 250px;
+}
+
+.image-container{
+  width:100%;
+}
+
+.masonry {
+  margin: 1.5em 0;
+  padding: 0;
+  -moz-column-gap: 1.5em;
+  -webkit-column-gap: 1.5em;
+  column-gap: 1.5em;
+  font-size: .85em;
+}
+
+.item {
+  display: inline-block;
+  background: #fff;
+  margin: 0 0 1.5em;
+  height: 100%;
+}
+
+@media only screen and (min-width: 400px) {
+  .masonry {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+    .masonry {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .masonry {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+    }
+}
+
+@media only screen and (min-width: 1100px) {
+    .masonry {
+        -moz-column-count: 5;
+        -webkit-column-count: 5;
+        column-count: 5;
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .wrapper {
+        width: 1260px;
+    }
+}
+
+.full-screen-image-container {
+  background: transparent;
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  margin-top: 30px;
+  width: 90%;
+  height: 90%;
+  &.active {
+    -webkit-transition-duration: 1.5s; /* Safari */
+    transition-duration: 1.5s;
+    visibility: visible;
+    transform: translate(150px,0);
+    -webkit-transform: translate(150px,0); /** Chrome & Safari **/
+    -o-transform: translate(150px,0); /** Opera **/
+    -moz-transform: translate(150px,0); /** Firefox **/
+  }
+}
+
+.full-screen-image {
+  position: relative;
+  left: 0;
+  right: 0;
+  max-height: 90vh;
+  max-width: 60vw;
+  margin: 0 auto;
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
+}
+
+#draggable {
+  position: fixed;
+  top: 100px;
+  right: 50px;
+}
+
+#control-overlay {
+  background:rgba(255,255,255,0.9);
+  color: black;
+  max-width: 400px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 12px;
+  border-radius: 8px;
+  margin-left: 40px;
+  height: 200px;
+  visibility: hidden;
+  &.active {
+    visibility: visible;
+  }
+}
+
+.overlay-input {
+  .form-group {
+    .form-control {
+      height: 20px;
+    }
+  }
+}
+
+.table-responsive {
+  padding: 15px;
+  width: 100%;
+}
+
+tr {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.plus-icon {
+  height: 40px;
+  width: 40px;
+  background-image: url(plus.png);
+  background-size: contain;
+  z-index: 9999999;
+}
+
+.fixed-column {
+  color: black;
+  position: fixed;
+  width: 300px;
+  overflow: hidden;
+  overflow-y: scroll;
+  background: white;
+  top: 0;
+  bottom: 0;
+  z-index: 99999;
+  left: 0;
+}
+
+#left-side-bar {
+  margin-left: -300px;
+  visibility: hidden;
+  &.active {
+    -webkit-transition-duration: 1.5s; /* Safari */
+    transition-duration: 1.5s;
+    visibility: visible;
+    transform: translate(300px,0);
+    -webkit-transform: translate(300px,0); /** Chrome & Safari **/
+    -o-transform: translate(300px,0); /** Opera **/
+    -moz-transform: translate(300px,0); /** Firefox **/
+  }
+}
+
+#open-left-side-bar {
+  visibility: hidden;
+  &.active {
+    visibility: visible;
+  }
+}
+
+#left-side-bar-btn {
+  position: fixed;
+  left: 0;
+  top:0;
+  z-index: 9999999;
+}
+
+.tiny-overlay {
+  color: black;
+  background: rgba(255,255,255,0.9);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+#open-left-side-bar {
+  #left-side-bar-btn {
+    background-color: dark-grey !important;
+    background: dark-grey !important;
+  }
+}
+
+.image-holder {
 }

@@ -15,3 +15,10 @@
           .pull-right
             = Activity.all.count
           Activities
+
+    = link_to admin_photos_path do
+      .box
+        %h2
+          .pull-right
+            = Photo.all.count
+          Photos

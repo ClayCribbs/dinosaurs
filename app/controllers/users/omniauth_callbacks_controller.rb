@@ -1,4 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  skip_before_filter :redirect_to_sign_in
+
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 

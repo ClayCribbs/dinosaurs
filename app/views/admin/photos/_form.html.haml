@@ -1,0 +1,12 @@
+= simple_form_for([:admin, @photo]) do |f|
+  = f.error_notification
+
+  .form-group
+    = f.input :remote_featured_image_url, input_html: { class: 'form-control' }, as: :text
+  .form-group
+    = f.input :title, input_html: { class: 'form-control' }
+  .form-group
+    = f.input :description, input_html: { class: 'form-control' }
+
+  .form-actions
+    = f.button :submit, class: 'btn btn-primary btn-lg'

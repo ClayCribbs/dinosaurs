@@ -1,0 +1,5 @@
+.container-fluid.full-screen-image-container.center
+  .image-holder
+    = image_tag photo.featured_image, class: 'full-screen-image center'
+    .tiny-overlay
+      = render 'photo_count', photo: photo

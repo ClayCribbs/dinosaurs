@@ -1,0 +1,22 @@
+#open-left-side-bar
+  #left-side-bar-btn.btn.btn-primary
+    My Cart
+
+#left-side-bar.fixed-column
+  .container-fluid
+    .row.scrollable
+      - @my_photos.each do |photo|
+        .col-sm-12
+        = link_to fetch_photo_path(photo), remote: true, class: 'static-popup-link' do
+          = image_tag photo.featured_image.preview
+.container-fluid.full-height
+  .row
+    .col-sm-12.text-center
+      %h1 Photos
+      .masonry
+        - @photos.each do |photo|
+          .item
+            = link_to fetch_photo_path(photo), remote: true, class: 'static-popup-link' do
+              = image_tag photo.featured_image, class: 'image-clicker'
+
+#myModal.modal{"data-backdrop" => "static", "data-keyboard" => "false", :role => "dialog", :tabindex => "-1"}

@@ -5,8 +5,6 @@ class Photo < ApplicationRecord
   has_many :photos_users
   has_many :users, through: :photos_users, source: :user
 
-  after_update :recreate_versions
-
   enum orientation: [ :portrait, :landscape ]
 
   def widescreen?
@@ -22,14 +20,12 @@ class Photo < ApplicationRecord
   end
 
   def preview
-    case orientation
-      when 'portrait'
-        featured_image.portrait
-      when 'landscape'
-        featured_image.landscape
-      else
-        raise orientation.inspect
-        featured_image
+    if portrait?
+      featured_image.portrait
+    elsif landscape?
+      featured_image.landscape
+    else
+      featured_image
     end
   end
 end

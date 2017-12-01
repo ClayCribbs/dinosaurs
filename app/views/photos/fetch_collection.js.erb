@@ -1,0 +1,4 @@
+$('#myModal').modal('hide'); 
+$('body').removeClass('modal-open'); 
+$('.modal-backdrop').remove();
+$('#index-wrapper').html("<%= escape_javascript(render partial: 'photos/collection', locals: { photos: @photos } ) %>");

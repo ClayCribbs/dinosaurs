@@ -1,3 +1,4 @@
+$('#index-wrapper').html("<%= escape_javascript(render partial: 'photos/collection', locals: { photos: @photos } ) %>");
 $('#myModal').html("<%= escape_javascript(render partial: 'photos/modal', locals: { photo: @photo } ) %>");
 $('#myModal').modal('show')
 if ($('#left-side-bar').hasClass('active')) {

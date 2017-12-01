@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [ :show, :update_cart, :fetch ]
-  before_action :rotate_image, only: [ :fetch ]
+  before_action :set_photo, only: [ :show, :update_cart, :fetch, :fetch_collection ]
+  before_action :rotate_image, only: [ :fetch, :fetch_collection ]
 
   def index
     @photos = Photo.all
@@ -11,6 +11,14 @@ class PhotosController < ApplicationController
   end
 
   def fetch
+    @photos = Photo.all
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def fetch_collection
+    @photos = Photo.all
     respond_to do |format|
       format.js
     end

@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       post :update_cart
       get :fetch
     end
+    collection do
+      get :fetch_collection
+    end
   end
 
   root 'photos#index'

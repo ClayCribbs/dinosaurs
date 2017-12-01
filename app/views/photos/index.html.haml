@@ -9,14 +9,7 @@
         .col-sm-12
         = link_to fetch_photo_path(photo), remote: true, class: 'static-popup-link' do
           = image_tag photo.preview
-.container-fluid.full-height
-  .row
-    .col-sm-12.text-center
-      %h1 Photos
-      .masonry
-        - @photos.each do |photo|
-          .item
-            = link_to fetch_photo_path(photo), remote: true, class: 'static-popup-link' do
-              = image_tag photo.preview, class: 'image-clicker'
+#index-wrapper
+  = render 'collection', photos: @photos
 
 #myModal.modal{"data-backdrop" => "static", "data-keyboard" => "false", :role => "dialog", :tabindex => "-1"}

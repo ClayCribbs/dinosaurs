@@ -1,0 +1,9 @@
+.container-fluid.full-height
+  .row
+    .col-sm-12.text-center
+      %h1 Photos
+      .masonry
+        - photos.each do |photo|
+          .item
+            = link_to fetch_photo_path(photo), remote: true, class: 'static-popup-link' do
+              = image_tag photo.preview, class: 'image-clicker'

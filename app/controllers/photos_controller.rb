@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [ :show, :update_cart, :fetch ]
+  before_action :rotate_image, only: [ :fetch ]
 
   def index
     @photos = Photo.all
@@ -25,6 +26,16 @@ class PhotosController < ApplicationController
   end
 
   private
+
+  def rotate_image
+    if params[:rotate] == 'true'
+      if @photo.landscape?
+        @photo.portrait!
+      else
+        @photo.landscape!
+      end
+    end
+  end
 
   def set_photo
     @photo = Photo.find(params[:id])

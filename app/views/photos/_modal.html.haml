@@ -1,5 +1,7 @@
-.container-fluid.full-screen-image-container.center
-  .image-holder
-    = image_tag photo.featured_image.preview, class: 'full-screen-image center'
-    .tiny-overlay
-      = render 'photo_count', photo: photo
+= image_tag photo.featured_image, class: 'full-photo center'
+.container-fluid
+  .row
+    .col-sm-6
+    .col-sm-6
+      .tiny-overlay
+        = render 'photo_count', photo: photo

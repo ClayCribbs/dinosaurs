@@ -1,5 +1,5 @@
 class FeaturedImageUploader < CarrierWave::Uploader::Base
-
+  require 'open-uri'
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -18,11 +18,6 @@ class FeaturedImageUploader < CarrierWave::Uploader::Base
     "photos/Gottschalk+Wedding-#{model.id}.jpg"
   end
 
-   def landscape?
-    img = ::Magick::Image::read(file.file).first
-    img.columns > img.rows
-   end
-
   # Process files as they are uploaded:
   # process scale: [200, 300]
   #
@@ -31,12 +26,13 @@ class FeaturedImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :preview do
-    if :landscape?
-      process resize_to_fill: [ 300, 200 ]
-    else
-      process resize_to_fill: [ 200, 300 ]
-    end
+  
+  version :portrait do
+    process resize_to_fill: [ 300, 200 ]
+  end
+
+  version :landscape do
+    process resize_to_fill: [ 300, 200 ]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -50,5 +46,4 @@ class FeaturedImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end

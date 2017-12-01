@@ -23,6 +23,7 @@ gem 'meta-tags'
 gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-aws'
 gem 'rmagick'
+gem 'mini_magick'
 gem 'kaminari', github: 'amatsuda/kaminari', branch: 'master' #pagination
 
 group :development, :test do

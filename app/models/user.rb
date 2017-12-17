@@ -29,8 +29,18 @@ class User < ApplicationRecord
     Activity.create(user: self, action: 'create', description: "joined our site!")
   end
 
-  def quantity_owned(photo)
-    photos_user = PhotosUser.find_by(photo_id: photo.id, user_id: id)
+  def quantity_owned(photo, size=nil)
+    photos_user = PhotosUser.find_by(photo_id: photo.id, user_id: id, photo_print_size_id: size.id)
     return photos_user.present? ? photos_user.quantity : 0
+  end
+
+  def my_photos
+    ids               = photos_users.order(updated_at: :desc).map{|p| p.photo_id}.uniq
+    unorderded_photos = Photo.where(id: ids).order(:created_at)
+    photos            = ids.collect {|id| unorderded_photos.detect {|x| x.id == id}}
+  end
+
+  def sizes_for(photo_id)
+    PhotoPrintSize.where(id: PhotosUser.where(photo_id: photo_id, user_id: self.id).pluck(:photo_print_size_id))
   end
 end

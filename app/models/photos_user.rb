@@ -9,7 +9,7 @@ class PhotosUser < ApplicationRecord
 
   validates :photo_id,
     uniqueness: {
-      scope: :user_id,
+      scope:[:user_id, :photo_print_size_id],
       message: 'Photo Already Exists For This User.'
     }
 

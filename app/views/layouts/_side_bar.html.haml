@@ -1,0 +1,22 @@
+.container-fluid.text-center
+  #scrollable_row.row.scrollable
+    - if my_photos.blank?
+      %h4.text-center.no-photos  You don't have any photos in your album yet!
+    - else
+      - my_photos.each do |photo|
+        .col-sm-12{id: "photo_#{photo.id}"}
+          .container-fluid
+            .row
+              .col-sm-12
+                = link_to fetch_photo_path(photo), remote: true, class: 'static-popup-link' do
+                  = image_tag photo.preview, class: 'side-bar-image'
+            .row
+              - PhotoPrintSize.all.each do |size|
+                .col-sm-4
+                  = "#{size.width} x #{size.height}"
+                  = simple_form_for photo, url: "/photos/#{photo.id}/update_cart", remote: :true, method: :post do |f|
+                    .form-group
+                      = f.input :quantity, label: false, input_html: { value: current_user.quantity_owned(photo, size), class: 'form-control  form-control-sm' }
+                      = f.hidden_field :size_id, value: size.id
+          %hr
+

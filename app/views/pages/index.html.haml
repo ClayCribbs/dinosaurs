@@ -1,0 +1,52 @@
+.splash-page
+  .splash-text.text-center
+    .container-fluid
+      .row
+        .col-sm-1
+        .col-sm-10
+          #greeting
+            %h1 photo-cart
+            .row.pad-top
+              .col-md-6.text-center.top-margin
+                .btn.btn-grey{onclick: "$('#greeting').addClass('display-none');$('#sign-up').removeClass('display-none');"}
+                  Sign Up
+              .col-md-6.text-center.top-margin
+                - if current_user.present?
+                  = link_to 'Get Started', photos_path, class: 'btn btn-grey'
+                - else
+                  .btn.btn-grey{onclick: "$('#greeting').addClass('display-none');$('#sign-in').removeClass('display-none');"}
+                    Get Started
+          #sign-in.row.display-none.active
+            .col-sm-12
+              %h2.text-center Log in
+              = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+                .form-inputs
+                  .form-group
+                    = f.input :email, required: false, label: false, placeholder: 'email', autofocus: true, input_html: { class: 'form-control form-control-sm' }
+                  .form-group
+                    = f.input :password, label: false, placeholder: 'Password', required: false, input_html: { class: 'form-control form-control-sm' }
+                .row.pad-top
+                  .col-sm-6
+                    .btn.btn-grey{onclick: "$('#greeting').removeClass('display-none');$('#sign-in').addClass('display-none');"}
+                      Back
+                  .col-sm-6
+                    = f.button :submit, 'Log in', class: 'btn btn-grey'
+
+          #sign-up.row.display-none.active
+            .col-sm-12
+              %h2 Sign Up
+              = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+                = f.error_notification
+                .form-inputs.top-margin-lg
+                  = render 'users/registrations/user_fields', f: f
+                  .form-group
+                    = f.input :password, required: true, label: false, placeholder: 'Password', input_html: { class: 'form-control form-control-sm', placeholder: "#{@minimum_password_length} characters minimum" }
+                  .form-group
+                    = f.input :password_confirmation, label: false, placeholder: 'Confirm Password', input_html: { class: 'form-control form-control-sm', placeholder: 'must match above' }, required: true
+                .row.pad-top
+                  .col-sm-6
+                    .btn.btn-grey{onclick: "$('#greeting').removeClass('display-none');$('#sign-up').addClass('display-none');"}
+                      Back
+                  .col-sm-6
+                    .form-actions
+                      = f.button :submit, 'Sign up', class: 'btn btn-primary btn-grey'

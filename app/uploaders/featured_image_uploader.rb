@@ -15,7 +15,7 @@ class FeaturedImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
-    "photos/Gottschalk+Wedding-#{model.id}.jpg"
+    "https://rebeccacribbs.s3.amazonaws.com/uploads/photo/featured_image/374/portrait_Gottschalk%2BWedding-31.jpg"
   end
 
   # Process files as they are uploaded:

@@ -3,9 +3,7 @@ $ ->
     e.stopPropagation()
     e.preventDefault()
 
-  $(document).on 'click', '.full-screen-image-container', ->
-    $('#open-left-side-bar').removeClass('active');
-    $('#left-side-bar').removeClass('active');
+  $(document).on 'click', '#myModal', ->
     $("#myModal").toggle();
     $('#myModal').modal('hide');
     $('body').removeClass('modal-open');
@@ -14,11 +12,13 @@ $ ->
   $(document).on 'click', '#open-left-side-bar', (e) ->
     e.stopPropagation()
     e.preventDefault()
+    $('#left-side-bar-btn').toggleClass('active')
+    $('#body-wrapper').toggleClass('active')
     $('#left-side-bar').toggleClass('active')
+    $('#arrow').toggleClass('fa-arrow-right').toggleClass('fa-arrow-left')
     $('.full-screen-image-container').toggleClass('active')
 
   $('#myModal').on 'shown.bs.modal', ->
-    $('#open-left-side-bar').addClass('active')
 
   if $('#left-side-bar').hasClass('active')
     $('.full-screen-image-container').addClass('active')

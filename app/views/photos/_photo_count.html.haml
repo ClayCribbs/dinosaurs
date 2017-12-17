@@ -1,16 +1,8 @@
 .row.no-pad
-  .col-sm-4
-    5 x 7
-    = simple_form_for photo, url: "/photos/#{photo.id}/update_cart", method: :post do |f|
-      .form-group
-        = f.input :quantity, label: false, input_html: { value: current_user.quantity_owned(photo), class: 'form-control  form-control-sm' }
-  .col-sm-4
-    8 x 10
-    = simple_form_for photo, url: "/photos/#{photo.id}/update_cart", method: :post do |f|
-      .form-group
-        = f.input :quantity, label: false, input_html: { value: current_user.quantity_owned(photo), class: 'form-control  form-control-sm' }
-  .col-sm-4
-    11 x 14
-    = simple_form_for photo, url: "/photos/#{photo.id}/update_cart", method: :post do |f|
-      .form-group
-        = f.input :quantity, label: false, input_html: { value: current_user.quantity_owned(photo), class: 'form-control  form-control-sm' }
+  - PhotoPrintSize.all.each do |size|
+    .col-sm-4
+      = "#{size.width} x #{size.height}"
+      = simple_form_for photo, url: "/photos/#{photo.id}/update_cart?cart_only=#{@cart_only}", remote: :true, method: :post do |f|
+        .form-group
+          = f.input :quantity, label: false, input_html: { value: current_user.quantity_owned(photo, size), class: 'form-control  form-control-sm' }
+          = f.hidden_field :size_id, value: size.id

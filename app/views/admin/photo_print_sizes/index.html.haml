@@ -1,0 +1,23 @@
+%h1 Listing photo_print_sizes
+
+%table
+  %thead
+    %tr
+      %th Width
+      %th Height
+      %th
+      %th
+      %th
+
+  %tbody
+    - @photo_print_sizes.each do |photo_print_size|
+      %tr
+        %td= photo_print_size.width
+        %td= photo_print_size.height
+        %td= link_to 'Show', admin_photo_print_size_path(photo_print_size)
+        %td= link_to 'Edit', edit_admin_photo_print_size_path(photo_print_size)
+        %td= link_to 'Destroy', admin_photo_print_size_path(photo_print_size), method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Photo print size', new_admin_photo_print_size_path

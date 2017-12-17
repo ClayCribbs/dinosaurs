@@ -16,6 +16,8 @@
 //= require_tree .
 
 $(document).ready(function() {
+  $("img.lazy").lazyload({skip_invisible : false, failure_limit : 999, effect: "fadeIn"}).removeClass("lazy");
+
   $(function(){
     var sPositions = localStorage.positions || "{}",
     positions = JSON.parse(sPositions);

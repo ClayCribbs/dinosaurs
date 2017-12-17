@@ -1,4 +1,2 @@
-$('#myModal').modal('hide'); 
-$('body').removeClass('modal-open'); 
-$('.modal-backdrop').remove();
+$('#myModal').html("<%= escape_javascript(render partial: 'photos/modal', locals: { photo: @photo, cart_only: @cart_only } ) %>");
 $('#index-wrapper').html("<%= escape_javascript(render partial: 'photos/collection', locals: { photos: @photos, cart_only: @cart_only } ) %>");

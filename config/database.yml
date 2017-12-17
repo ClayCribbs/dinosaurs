@@ -23,27 +23,27 @@ default: &default
 
 development:
   <<: *default
-  database: rails-app-template-development
+  database: photocart-development
 
 test:
   <<: *default
-  database: rails-app-template-test
+  database: photocart-test
 
-development:
+staging:
   <<: *default
-  database: rails-app-template-staging
+  database: photocart-staging
 
 production:
   <<: *default
-  database: rails-app-template-production
-  username: rails-app-template
-  password: <%= ENV['RAILS-APP-TEMPLATE_DATABASE_PASSWORD'] %>
+  database: photocart-production
+  username: photocart
+  password: <%= ENV['PHOTOCART_DATABASE_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: rails-app-template
+  #username: photocart
 
   # The password associated with the postgres role (username).
   #password:

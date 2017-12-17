@@ -1,0 +1,2 @@
+$('#left-side-bar').html("<%= escape_javascript(render partial: 'layouts/side_bar', locals: { my_photos: @my_photos, cart_only: @cart_only } ) %>");
+$('#index-wrapper').html("<%= escape_javascript(render partial: 'photos/collection', locals: { photos: @photos, cart_only: @cart_only } ) %>");

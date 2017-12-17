@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201002523) do
+ActiveRecord::Schema.define(version: 20171208003423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,21 +39,30 @@ ActiveRecord::Schema.define(version: 20171201002523) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
+  create_table "photo_print_sizes", force: :cascade do |t|
+    t.decimal  "width"
+    t.decimal  "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string   "featured_image"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.string   "external_url"
     t.integer  "orientation",    default: 0, null: false
   end
 
   create_table "photos_users", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "photo_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "quantity"
+    t.integer  "photo_print_size_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -14,17 +14,19 @@ Rails.application.routes.draw do
     resources :activities, only: [:index]
     resources :users, only: [:index, :show]
     resources :photos
+    resources :photo_print_sizes
   end
 
   resources :photos, only: [:index, :show] do
     member do
       post :update_cart
       get :fetch
+      get :rotate
     end
     collection do
       get :fetch_collection
     end
   end
 
-  root 'photos#index'
+  root 'pages#index'
 end

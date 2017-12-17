@@ -20,11 +20,11 @@ gem 'simple_form'
 gem 'haml-rails', '~> 1.0'
 gem 'font-awesome-rails'
 gem 'meta-tags'
-gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-aws'
 gem 'rmagick'
 gem 'mini_magick'
 gem 'kaminari', github: 'amatsuda/kaminari', branch: 'master' #pagination
+gem 'lazyload-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri

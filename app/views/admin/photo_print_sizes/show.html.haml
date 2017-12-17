@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Width:
+  = @photo_print_size.width
+%p
+  %b Height:
+  = @photo_print_size.height
+
+= link_to 'Edit', edit_admin_photo_print_size_path(@photo_print_size)
+\|
+= link_to 'Back', admin_photo_print_sizes_path

@@ -1,15 +1,5 @@
-#open-left-side-bar
-  #left-side-bar-btn.btn.btn-primary
-    My Cart
-
-#left-side-bar.fixed-column
-  .container-fluid
-    .row.scrollable
-      - @my_photos.each do |photo|
-        .col-sm-12
-        = link_to fetch_photo_path(photo), remote: true, class: 'static-popup-link' do
-          = image_tag photo.preview
 #index-wrapper
-  = render 'collection', photos: @photos
+  = render 'collection', photos: @photos, cart_only: @cart_only
 
-#myModal.modal{"data-backdrop" => "static", "data-keyboard" => "false", :role => "dialog", :tabindex => "-1"}
+#modal-container
+  #myModal.modal.full-screen-image-container{"data-backdrop" => "static", "data-keyboard" => "false", :role => "dialog", :tabindex => "-1"}

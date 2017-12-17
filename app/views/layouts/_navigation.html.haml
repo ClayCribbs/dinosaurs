@@ -1,32 +1,11 @@
-%nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
-  %button.navbar-toggler.navbar-toggler-right{ aria: { expanded: 'false', label: 'Toggle Navigation' }, data: { target: '#navbarSupportedContent', toggle: 'collapse' }, type: 'button' }
-    %span.navbar-toggler-icon
-  = link_to root_url, class: 'navbar-brand' do
-    Home
+- if current_user.nil?
+  = link_to 'Sign In', new_user_session_path, class: 'btn btn-primary'
+- else
+  #open-left-side-bar
+    #left-side-bar-btn.btn.open-btn
+      #arrow.fa.fa-arrow-right
+  #left-side-bar.fixed-column
+    = render 'layouts/side_bar', my_photos: @my_photos
 
-  #navbarSupportedContent.collapse.navbar-collapse
-    %ul.navbar-nav.mr-auto
-      - if current_user && current_user.is_admin
-        = link_to admin_dashboard_path, class: 'nav-link' do
-          Admin Dashboard
-    %ul.navbar-nav.navbar-right
-      - if current_user
-        %li.nav-profile-pic
-          = image_tag(current_user.featured_image)
-        %li.dropdown.nav-link
-          #navigation-user-settings.dropdown-toggle{ aria: { expanded: 'false', haspopup: 'true' }, data: { toggle: 'dropdown' } }
-            .fa.fa-cog
-            %span.caret
-          .dropdown-menu.dropdown-menu-right{ aria: { labelledby: 'navigation-user-settings' } }
-            = link_to edit_user_registration_url, class: 'nav-link' do
-              Settings
-            = link_to destroy_user_session_url, method: :delete, class: 'nav-link' do
-              Logout
-            %ul.dropdown-menu.user-menu
-              %li
-                = link_to 'Account Settings', edit_user_registration_path
-              %li
-                = link_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link'
-      - else
-        %li.nav-item
-          = link_to 'Sign In', new_user_session_url, class: 'nav-link'
+  #sign-out-btn-wrapper
+    = link_to 'Profile', destroy_user_session_path, method: :delete, class: 'btn btn-profile'

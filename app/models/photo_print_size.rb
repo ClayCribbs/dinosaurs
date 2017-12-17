@@ -1,0 +1,2 @@
+class PhotoPrintSize < ApplicationRecord
+end

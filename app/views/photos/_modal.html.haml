@@ -1,8 +1,8 @@
-= image_tag photo.featured_image, class: 'full-photo center'
+= image_tag photo.preview, class: 'full-photo'
 .container-fluid
   .row
     .col-sm-6
     .col-sm-6
       .tiny-overlay
         = render 'photo_count', photo: photo
-        = link_to 'rotate', fetch_photo_path(rotate: true), remote: true, class: 'static-popup-link'
+        = link_to 'rotate', rotate_photo_path(id: photo.id, rotate: true, cart_only: cart_only), remote: true, class: 'static-popup-link black'

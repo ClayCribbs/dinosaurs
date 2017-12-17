@@ -1,5 +1,4 @@
-$('#index-wrapper').html("<%= escape_javascript(render partial: 'photos/collection', locals: { photos: @photos } ) %>");
-$('#myModal').html("<%= escape_javascript(render partial: 'photos/modal', locals: { photo: @photo } ) %>");
+$('#myModal').html("<%= escape_javascript(render partial: 'photos/modal', locals: { photo: @photo, cart_only: @cart_only } ) %>");
 $('#myModal').modal('show')
 if ($('#left-side-bar').hasClass('active')) {
   $('.full-screen-image-container').addClass('active')

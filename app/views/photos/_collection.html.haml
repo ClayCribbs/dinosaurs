@@ -1,9 +1,16 @@
 .container-fluid.full-height
   .row
-    .col-sm-12.text-center
-      %h1 Photos
+    .col-sm-12.text-center.pad-top
       .masonry
         - photos.each do |photo|
-          .item
-            = link_to fetch_photo_path(photo), remote: true, class: 'static-popup-link' do
-              = image_tag photo.preview, class: 'image-clicker'
+          #container.fluid
+            .item
+              .wrapper{:style => "width:100%; padding-bottom: #{photo.portrait? ? '150' : '65'}%"}
+                .inner
+                  = link_to fetch_photo_path(photo, cart_only: cart_only), remote: true, class: 'static-popup-link' do
+                    = image_tag photo.preview, alt: '', lazy: true, class: 'image-clicker lazy'
+#cart-btn-wrapper
+  - if cart_only == 'true'
+    = link_to 'All Photos', fetch_collection_photos_path, remote: true, class: 'static-popup-link btn btn-grey'
+  - else
+    = link_to 'My Album', fetch_collection_photos_path(cart_only: 'true'), remote: true, class: 'static-popup-link btn btn-grey'
